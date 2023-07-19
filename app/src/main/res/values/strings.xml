@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">ComposeCodeLabs</string>
+    <string name="welcome">Welcome to the Basic Codelabs!</string>
+    <string name="continue_app">Continue</string>
+    <string name="hello">Hello,</string>
+    <string name="message_suprise">You can see now! o/</string>
+    <string name="show_more">Show more</string>
+    <string name="show_less">Show less</string>
 </resources>

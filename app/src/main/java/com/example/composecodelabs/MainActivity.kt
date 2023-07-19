@@ -1,5 +1,6 @@
 package com.example.composecodelabs
 
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -26,10 +27,10 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.composecodelabs.ui.theme.ComposeCodeLabsTheme
-import kotlin.math.exp
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,21 +63,22 @@ fun Greeting(name: String) {
                 .padding(bottom = extraPadding.coerceAtLeast(0.dp))
             ){
             Text(
-                    text = "Hello,"
+                    text = stringResource(R.string.hello)
                 )
                 Text(
-                    text = "$name!"
+                    text = "$name!",
+                    style = MaterialTheme.typography.headlineMedium
                 )
 
                 if (expanded){
                     Text(
-                        text = "You can see now! o/", modifier = Modifier.padding(10.dp))
+                        text = stringResource(R.string.message_suprise), modifier = Modifier.padding(10.dp))
                 }
 
 
             }
             ElevatedButton(onClick = { expanded = !expanded }) {
-                Text(if (expanded) "Show less" else "Show more")
+                Text(if (expanded) stringResource(R.string.show_less) else stringResource(R.string.show_more))
             }
 
 
@@ -91,10 +93,10 @@ fun OnboardingScreen(onContinueClicked: () -> Unit,modifier:Modifier = Modifier)
     Column(modifier = modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(text = "Welcome to the Basic Codelabs!")
+        Text(text = stringResource(R.string.welcome))
         Button(modifier = Modifier.padding(vertical = 24.dp),
             onClick = onContinueClicked) {
-            Text(text = "Continue")
+            Text(text = stringResource(R.string.continue_app))
         }
 
     }
@@ -128,7 +130,10 @@ fun Greetings(
 
 
 
-@Preview(showBackground = true, widthDp = 320, heightDp = 320)
+@Preview(showBackground = true, widthDp = 320, heightDp = 320,
+uiMode = UI_MODE_NIGHT_YES,
+    name = "Dark"
+)
 @Composable
 fun OnboardingPreview(){
     ComposeCodeLabsTheme {
